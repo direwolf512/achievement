@@ -1,0 +1,16 @@
+[
+  {
+    "userName": "test1",
+    "data": {
+      "username": "test1",
+      "password": "111111"
+    }
+  },
+  {
+    "userName": "test2",
+    "data": {
+      "username": "test2",
+      "password": "123456"
+    }
+  }
+]

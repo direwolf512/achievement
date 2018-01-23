@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <section class="user">
+      <h1>
+        <a href="../" id="logOut">注销</a>
+        <%= title %>
+        <a href="../add">添加</a>
+      </h1>
+      <ul class="nav">
+        <li id="forDateFilter">日期</li>
+        <li id="forTitleFilter">标题</li>
+        <li id="forKeywordFilter">关键字</li>
+      </ul>
+      <% if (data.creatAtArr.length > 0) { %>
+      <div id="forDate">
+        <ul>
+          <% for(var i = 0; i < data.creatAtArr.length; i++){ %>
+          <li>
+            <a href="./msg?creatAt=<%= data[data.creatAtArr[i]].creatAt %>&userName=<%= data[data.creatAtArr[i]].userName %>">
+              <%= data[data.creatAtArr[i]].creatAt %>
+            </a>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+      <div id="forTitle">
+        <ul>
+          <% for(var j = 0; j < data.creatAtArr.length; j++){ %>
+          <li>
+            <a href="./msg?creatAt=<%= data[data.creatAtArr[j]].creatAt %>&userName=<%= data[data.creatAtArr[j]].userName %>">
+              <%= data[data.creatAtArr[j]].title %>
+            </a>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+      <div id="forKeyword">
+        <ul>
+          <% for(var k = 0; k < data.creatAtArr.length; k++){ %>
+          <li>
+            <a href="./msg?creatAt=<%= data[data.creatAtArr[k]].creatAt %>&userName=<%= data[data.creatAtArr[k]].userName %>">
+              <%= data[data.creatAtArr[k]].keyword %>
+            </a>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+      <% } else { %>
+      暂无数据
+      <% } %>
+
+    </section>
+  </body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script type="text/javascript" src="/javascripts/detail.js"></script>

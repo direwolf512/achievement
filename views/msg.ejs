@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <section class="msg">
+      <a href="./detail?userName=<%= data.userName %>">返回</a>
+      <h2><%= data.title %></h2>
+      <%= data.msg %>
+    </section>
+  </body>
+</html>
