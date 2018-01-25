@@ -77,6 +77,10 @@ a {
   cursor: pointer;
 }
 
+.user .goBackSelf {
+  display: none;
+}
+
 .add textarea{
   display: block;
   margin: 10px 0;

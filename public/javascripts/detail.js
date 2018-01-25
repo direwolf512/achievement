@@ -3,6 +3,17 @@
  * @author ISS
  */
 $(function () {
+  var userName = window.localStorage.getItem('userName'),
+      sss = window.location.search.split('=')[1];
+  if (userName !== sss) {
+    $('#logOut').css('display', 'none');
+    $('#addMsg').css('display', 'none');
+    $('#goBackSelf').css('display', 'block');
+  } else {
+    $('#logOut').css('display', 'block');
+    $('#addMsg').css('display', 'block');
+    $('#goBackSelf').css('display', 'none');
+  }
   $('#forDate').css('display', 'block');
   $('#forTitle').css('display', 'none');
   $('#forKeyword').css('display', 'none');
@@ -33,5 +44,8 @@ $(function () {
   });
   $('#logOut').on('click', function () {
     window.localStorage.setItem('userName', '');
+  });
+  $('#goBackSelf').on('click', function () {
+    location.href = '/users/detail?userName=' + userName;
   });
 });
