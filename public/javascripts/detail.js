@@ -9,10 +9,12 @@ $(function () {
     $('#logOut').css('display', 'none');
     $('#addMsg').css('display', 'none');
     $('#goBackSelf').css('display', 'block');
+    $('.del').css('display', 'none');
   } else {
     $('#logOut').css('display', 'block');
     $('#addMsg').css('display', 'block');
     $('#goBackSelf').css('display', 'none');
+    $('.del').css('display', 'inline-block');
   }
   $('#forDate').css('display', 'block');
   $('#forTitle').css('display', 'none');
@@ -52,4 +54,26 @@ $(function () {
   $('#goBackSelf').on('click', function () {
     location.href = '/users/detail?userName=' + userName;
   });
+  /* 删除 */
+  var del = $('.del');
+  for (var i = 0; i < del.length; i++) {
+    (function (j) {
+      del[j].onclick = function () {
+        $.ajax({
+          url: '../add/subtraction',
+          type: 'delete',
+          data: {
+            id: this.getAttribute('data-id'),
+            userName: userName
+          },
+          success: function (data, status) {
+            location.href = '/users/detail?userName=' + userName;
+          },
+          error: function (data, err) {
+            console.log(err)
+          }
+        });
+      }
+    })(i);
+  }
 });

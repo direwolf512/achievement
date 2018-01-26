@@ -21,10 +21,11 @@
       <div id="forDate">
         <ul>
           <% for(var i = 0; i < data.creatAtArr.length; i++){ %>
-          <li>
+          <li style="display: flex; justify-content: space-between; margin-top: 5px;">
             <a href="./msg?creatAt=<%= data[data.creatAtArr[i]].creatAt %>&userName=<%= data[data.creatAtArr[i]].userName %>">
               <%= new Date(+data[data.creatAtArr[i]].creatAt).getFullYear() %>/<%= new Date(+data[data.creatAtArr[i]].creatAt).getMonth() + 1 %>/<%= new Date(+data[data.creatAtArr[i]].creatAt).getDate() %>
             </a>
+            <a class="del" data-id="<%= data[data.creatAtArr[i]].creatAt %>">删除</a>
           </li>
           <% } %>
         </ul>

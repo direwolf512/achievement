@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
   res.render('add', { title: '添加页' });
 });
 
+/* 创建一条日记 */
 router.post('/msg', function(req, res, next) {
   var msg = req.body;
   var _data = {
@@ -36,6 +37,29 @@ router.post('/msg', function(req, res, next) {
     });
   });
   res.send('ok');
+});
+
+/* 删除一条日记 */
+router.delete('/subtraction', function (req, res, data) {
+  var msg = req.body,
+      id = +msg.id,
+      userName = msg.userName;
+  fs.readFile('./files/' + userName + '.json', 'utf-8', function (err, data) {
+    var oldMsg = JSON.parse(data);
+    for (var i = 0; i < oldMsg.creatAtArr.length; i++) {
+      console.log(oldMsg.creatAtArr[i])
+      if (+oldMsg.creatAtArr[i] === id) {
+        oldMsg.creatAtArr.splice(i, 1);
+      }
+    }
+    delete oldMsg[id];
+    fs.writeFile('./files/' + userName + '.json', '', 'utf-8', function (err, data) {
+      console.log('delete');
+    });
+    fs.writeFile('./files/' + userName + '.json', JSON.stringify(oldMsg), 'utf-8', function (err, data) {
+      res.send('ok');
+    });
+  });
 });
 
 module.exports = router;
