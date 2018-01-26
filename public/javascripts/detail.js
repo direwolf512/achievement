@@ -42,9 +42,13 @@ $(function () {
     $('#forTitleFilter').css('background', '#ccc');
     $('#forKeywordFilter').css('background', '#eee');
   });
+  /* 注销 */
   $('#logOut').on('click', function () {
     window.localStorage.setItem('userName', '');
+    document.cookie = "userName=" + null + ';path=/;';
+    location.href = './';
   });
+  /* 返回个人主页 */
   $('#goBackSelf').on('click', function () {
     location.href = '/users/detail?userName=' + userName;
   });

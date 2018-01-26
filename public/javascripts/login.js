@@ -15,9 +15,11 @@ $(function () {
         if (typeof data === 'string') {
           alert(data)
         } else {
-          location.href = '/users/detail?userName=' + data.userName;
+          //location.href = '/users/detail?userName=' + data.userName;
+          location.href = '/users/list';
         }
         window.localStorage.setItem('userName', data.userName);
+        document.cookie = "userName=" + data.userName;
       },
       error: function (data, err) {
 

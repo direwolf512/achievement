@@ -12,6 +12,7 @@ body {
 
 a {
   color: #00B7FF;
+  cursor: pointer;
 }
 
 .register .btn, .login .btn {
@@ -44,6 +45,11 @@ a {
   margin: 10px auto;
 }
 
+.user #addMsg {
+  font-size: 24px;
+  margin-top: 20px;
+}
+
 .user h1 {
   text-align: center;
   margin: 20px 0;
@@ -57,6 +63,12 @@ a {
 }
 
 .user h1 a:nth-child(2) {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.user h1 a:nth-child(3) {
   position: absolute;
   right: 0;
   top: 0;

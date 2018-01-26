@@ -28,6 +28,7 @@ router.post('/register', function(req, res, next) {
   });
   res.send('post login success！');
 });
+
 /* 登录 */
 router.post('/login', function(req, res, next) {
   var msg = req.body;
@@ -60,12 +61,14 @@ router.post('/login', function(req, res, next) {
   });
 
 });
+
 /* 获取用户列表 */
 router.get('/usersArr', function(req, res, next) {
   fs.readFile('./files/user.json', 'utf-8', function (err, data) {
     res.send(data);
   });
 });
+
 /* 用户详情 */
 router.get('/detail', function(req, res, next) {
   var userName = req.query.userName;
@@ -95,6 +98,17 @@ router.get('/msg', function(req, res, next) {
     res.render('msg', {
       title: '内容',
       data: JSON.parse(data)[req.query.creatAt]
+    });
+  });
+});
+
+/* 用户列表 */
+router.get('/list', function(req, res, next) {
+  fs.readFile('./files/user.json', 'utf-8', function (err, data) {
+    console.log(JSON.parse(data))
+    res.render('list', {
+      title: '用户列表',
+      data: JSON.parse(data)
     });
   });
 });
