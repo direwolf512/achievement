@@ -29,7 +29,7 @@ $(function () {
           }else if(passwordF === passwordS) {
             var msg = {"username": username, "password": passwordF};
             $.ajax({
-              url: './users/register',
+              url: './register',
               type: 'post',
               data: msg,
               success: function (data, status) {

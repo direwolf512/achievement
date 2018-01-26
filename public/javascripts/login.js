@@ -8,7 +8,7 @@ $(function () {
     var password = $('#password').val();
     var msg = {"username": username, "password": password};
     $.ajax({
-      url: './users/login',
+      url: './login',
       type: 'post',
       data: msg,
       success: function (data, status) {

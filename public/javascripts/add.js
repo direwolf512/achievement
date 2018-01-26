@@ -16,18 +16,22 @@ $(function () {
       creatAt: creatAt,
       userName: userName
     };
-    $.ajax({
-      url: './add/msg',
-      type: 'post',
-      data: data,
-      success: function (data, status) {
-        if (data === 'ok') {
-          location.href = '/users/detail?userName=' + userName;
-        }
-      },
-      error: function (data, err) {
+    if (title !== '' && msg !== '' && keyword !== '') {
+      $.ajax({
+        url: './add/msg',
+        type: 'post',
+        data: data,
+        success: function (data, status) {
+          if (data === 'ok') {
+            location.href = '/users/detail?userName=' + userName;
+          }
+        },
+        error: function (data, err) {
 
-      }
-    });
+        }
+      });
+    } else {
+      alert('内容不完整');
+    }
   })
 });
