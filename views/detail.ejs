@@ -25,7 +25,10 @@
             <a href="./msg?creatAt=<%= data[data.creatAtArr[i]].creatAt %>&userName=<%= data[data.creatAtArr[i]].userName %>">
               <%= new Date(+data[data.creatAtArr[i]].creatAt).getFullYear() %>/<%= new Date(+data[data.creatAtArr[i]].creatAt).getMonth() + 1 %>/<%= new Date(+data[data.creatAtArr[i]].creatAt).getDate() %>
             </a>
-            <a class="del" data-id="<%= data[data.creatAtArr[i]].creatAt %>">删除</a>
+            <div style="display: inline-block">
+              <a class="edit" data-id="<%= data[data.creatAtArr[i]].creatAt %>">编辑</a>
+              <a class="del" data-id="<%= data[data.creatAtArr[i]].creatAt %>">删除</a>
+            </div>
           </li>
           <% } %>
         </ul>

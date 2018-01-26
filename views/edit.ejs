@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <section class="edit">
+      <h1>
+        <%= title %>
+      </h1>
+      标题：<input type="text" id="title" value="<%= data.title %>">
+      <textarea name="" id="msg" cols="30" rows="10"><%= data.msg %></textarea>
+      关键词：<input type="text" id="keyword" value="<%= data.keyword %>">
+      <span id="sss">保存</span>
+    </section>
+  </body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script type="text/javascript" src="/javascripts/edit.js"></script>

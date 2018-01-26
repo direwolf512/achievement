@@ -62,4 +62,45 @@ router.delete('/subtraction', function (req, res, data) {
   });
 });
 
+/* 编辑一条日记 */
+router.post('/editor', function (req, res, data) {
+    var msg = req.body,
+        id = msg.id,
+        userName = msg.userName;
+    fs.readFile('./files/' + userName + '.json', 'utf-8', function (err, data) {
+        var oldMsg = JSON.parse(data);
+        console.log(oldMsg[id]);
+        console.log(msg);
+        oldMsg[id].title = msg.title;
+        oldMsg[id].msg = msg.msg;
+        oldMsg[id].keyword = msg.keyword;
+        console.log(oldMsg[id])
+        fs.writeFile('./files/' + userName + '.json', '', 'utf-8', function (err, data) {
+            console.log('delete');
+        });
+        fs.writeFile('./files/' + userName + '.json', JSON.stringify(oldMsg), 'utf-8', function (err, data) {
+            res.send('ok');
+        });
+    });
+});
+
+/* 编辑页 */
+router.get('/edit', function(req, res, next) {
+    if (req.headers.cookie) {
+				var userNameLogin = req.headers.cookie.split('userName=')[1].split(';')[0];
+				var userName = req.query.userName;
+				var id = req.query.id;
+				if (userNameLogin !== 'null' && userName === userNameLogin) {
+						fs.readFile('./files/' + userName + '.json', 'utf-8', function (err, data) {
+								res.render('edit', {
+										title: '编辑页',
+										data: JSON.parse(data)[id]
+								});
+						});
+        } else {
+						res.redirect('../users/detail?userName='+ userNameLogin);
+        }
+		}
+});
+
 module.exports = router;

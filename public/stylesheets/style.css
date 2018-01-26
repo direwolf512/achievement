@@ -93,16 +93,16 @@ a {
   display: none;
 }
 
-.add textarea{
+.add textarea, .edit textarea {
   display: block;
   margin: 10px 0;
 }
 
-.add input {
+.add input, .edit input {
   display: inline-block;
   margin: 10px 0;
 }
-.add span {
+.add span, .edit span  {
   display: block;
   cursor: pointer;
 }
