@@ -15,6 +15,10 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "browser-sync": "^2.23.6",
+    "gulp": "^3.9.1",
+    "gulp-stylus": "^2.7.0",
+    "gulp-uglify": "^3.0.0",
     "supervisor": "^0.12.0"
   }
 }

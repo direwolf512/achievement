@@ -1,0 +1,1 @@
+$(function(){$("#sss").on("click",function(){var e={username:$("#username").val(),password:$("#password").val()};$.ajax({url:"./login",type:"post",data:e,success:function(e,s){"string"==typeof e?alert(e):location.href="/users/list",window.localStorage.setItem("userName",e.userName),document.cookie="userName="+e.userName},error:function(e,s){}})})});

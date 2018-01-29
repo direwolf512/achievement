@@ -3,21 +3,24 @@ var fs = require('fs');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  if (req.headers.cookie) {
-      var userName = req.headers.cookie.split('userName=')[1].split(';')[0];
-      if (userName !== 'null') {
-          res.redirect('users/detail?userName='+ userName);
-      } else {
-          res.render('index', { title: '首页' });
-      }
+router.get('/', function (req, res, next) {
+  console.log(typeof req.headers.cookie)
+  if (req.headers.cookie.indexOf('userName=') > 0) {
+    console.log(req.headers.cookie)
+    var userName = req.headers.cookie.split('userName=')[1].split(';')[0];
+    if (userName !== 'null') {
+      res.redirect('users/detail?userName=' + userName);
+    } else {
+      res.render('index', {title: '首页'});
+    }
   } else {
-      res.render('index', { title: '首页' });
+    console.log(111111)
+    res.render('index', {title: '首页'});
   }
 });
 
 /* 注册 */
-router.post('/register', function(req, res, next) {
+router.post('/register', function (req, res, next) {
   var msg = req.body;
   var _data = {
     "userName": msg.username,
@@ -39,7 +42,7 @@ router.post('/register', function(req, res, next) {
 });
 
 /* 登录 */
-router.post('/login', function(req, res, next) {
+router.post('/login', function (req, res, next) {
   var msg = req.body;
   var _data = {
     "userName": msg.username,
@@ -71,11 +74,11 @@ router.post('/login', function(req, res, next) {
 
 });
 
-router.get('/login', function(req, res, next) {
+router.get('/login', function (req, res, next) {
   res.render('login', {});
 });
 
-router.get('/register', function(req, res, next) {
+router.get('/register', function (req, res, next) {
   res.render('register', {});
 });
 
