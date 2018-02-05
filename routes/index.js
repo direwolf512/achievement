@@ -6,7 +6,6 @@ var router = express.Router();
 router.get('/', function (req, res, next) {
   console.log(typeof req.headers.cookie)
   if (req.headers.cookie.indexOf('userName=') > 0) {
-    console.log(req.headers.cookie)
     var userName = req.headers.cookie.split('userName=')[1].split(';')[0];
     if (userName !== 'null') {
       res.redirect('users/detail?userName=' + userName);
@@ -14,7 +13,6 @@ router.get('/', function (req, res, next) {
       res.render('index', {title: '首页'});
     }
   } else {
-    console.log(111111)
     res.render('index', {title: '首页'});
   }
 });

@@ -69,12 +69,9 @@ router.post('/editor', function (req, res, data) {
         userName = msg.userName;
     fs.readFile('./files/' + userName + '.json', 'utf-8', function (err, data) {
         var oldMsg = JSON.parse(data);
-        console.log(oldMsg[id]);
-        console.log(msg);
         oldMsg[id].title = msg.title;
         oldMsg[id].msg = msg.msg;
         oldMsg[id].keyword = msg.keyword;
-        console.log(oldMsg[id])
         fs.writeFile('./files/' + userName + '.json', '', 'utf-8', function (err, data) {
             console.log('delete');
         });

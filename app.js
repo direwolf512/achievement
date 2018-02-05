@@ -12,16 +12,16 @@ var add = require('./routes/add');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views')); //设定查找目录
+app.set('view engine', 'ejs'); //设定模板为ejs，匹配时不需要加扩展名
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+app.use(logger('dev')); //use是express注册中间件的方法。
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(cookieParser()); //解析请求主体
+app.use(express.static(path.join(__dirname, 'build'))); //提供./build下的静态文件（默认为./public）
 
 app.use('/', index);
 app.use('/users', users);
